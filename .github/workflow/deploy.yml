@@ -1,0 +1,32 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+
+      - name: Install dependencies
+        run: composer install  # If you're using Composer to manage dependencies
+
+      - name: Build project
+        run: |
+          # Run any necessary build commands here
+          # For example, if you're using PHP, you might run: php build.php
+          php build.php
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./build   # Change this to the directory where your built project files are located
