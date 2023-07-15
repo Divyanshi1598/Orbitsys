@@ -15,7 +15,7 @@ jobs:
         uses: shivammathur/setup-php@v2
 
       - name: Install dependencies
-        run: composer install --no-dev  # If you're using Composer to manage dependencies
+        run: composer install --no-dev  
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
